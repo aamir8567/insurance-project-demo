@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
@@ -24,13 +24,17 @@ public class HomePageTest {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    @BeforeEach
-    public void setUp() {
-        WebDriverManager.firefoxdriver().driverVersion("0.35.0").setup();
-        driver = new FirefoxDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        driver.get("http://localhost:8081");  // Update with the correct URL for your app
-    }
+@BeforeEach
+public void setUp() {
+    WebDriverManager.firefoxdriver().driverVersion("0.35.0").setup();
+    
+    FirefoxOptions options = new FirefoxOptions();
+    options.setHeadless(true);  // Enable headless mode for non-GUI environments
+    
+    driver = new FirefoxDriver(options);
+    wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    driver.get("http://localhost:8081");
+}
 
 
     @Test
