@@ -4,6 +4,7 @@
 	<test name="testngTest">
 		<classes>
 			<class name="com.project.staragile.insureme.InsureMeApplicationTests" />
+			<class name="com.project.staragile.insureme.HomePageTest.java" />
 		</classes>
 	</test>	
 </suite>
